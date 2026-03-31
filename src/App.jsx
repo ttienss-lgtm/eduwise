@@ -34,6 +34,7 @@ import Roadmap from './pages/plan/Roadmap'
 import VisaGuide from './pages/services/VisaGuide'
 import ApplicationTracker from './pages/services/ApplicationTracker'
 import DocumentTemplates from './pages/services/DocumentTemplates'
+import ServiceCatalog from './pages/services/ServiceCatalog'
 
 export default function App() {
   const [user, setUser] = useState(() => {
@@ -79,6 +80,7 @@ export default function App() {
         <Route path="/visa" element={<VisaGuide />} />
         <Route path="/applications" element={<ApplicationTracker />} />
         <Route path="/documents" element={<DocumentTemplates />} />
+        <Route path="/services" element={<ServiceCatalog />} />
       </Route>
     </Routes>
   )

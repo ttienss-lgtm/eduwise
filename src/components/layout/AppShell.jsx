@@ -1,5 +1,5 @@
 import { Outlet, NavLink, useLocation } from 'react-router-dom'
-import { LayoutDashboard, ClipboardCheck, Globe, GraduationCap, Users, MessageCircle, Map, FileCheck, BookOpen, LogOut, Sparkles, FolderOpen, Star, User, ArrowLeftRight, FileText, Bot, Bell } from 'lucide-react'
+import { LayoutDashboard, ClipboardCheck, Globe, GraduationCap, Users, MessageCircle, Map, FileCheck, BookOpen, LogOut, Sparkles, FolderOpen, Star, User, ArrowLeftRight, FileText, Bot, Bell, Briefcase } from 'lucide-react'
 
 const NAV = [
     {
@@ -27,6 +27,7 @@ const NAV = [
     },
     {
         section: 'Kết nối', items: [
+            { to: '/services', icon: Briefcase, label: 'Dịch vụ Tư vấn' },
             { to: '/consultants', icon: Users, label: 'Tư vấn viên' },
             { to: '/community', icon: MessageCircle, label: 'Cộng đồng' },
         ]
