@@ -3,8 +3,8 @@ import { Plus, GripVertical, ExternalLink, Trash2 } from 'lucide-react'
 
 const INITIAL = [
     { id: 1, school: 'University of Melbourne', country: '🇦🇺', program: 'Master of Management', status: 'applied', deadline: 'Jan 2027', notes: 'SOP sent' },
-    { id: 2, school: 'University of Toronto', country: '🇨🇦', program: 'MSc Computer Science', status: 'preparing', deadline: 'Nov 2026', notes: 'Need GRE score' },
-    { id: 3, school: 'Waseda University', country: '🇯🇵', program: 'Master of Engineering', status: 'reviewing', deadline: 'Dec 2026', notes: 'MEXT scholarship' },
+    { id: 2, school: 'UNSW Sydney', country: '🇦🇺', program: 'MSc Computer Science', status: 'preparing', deadline: 'Mar 2027', notes: 'Đang luyện PTE' },
+    { id: 3, school: 'University of Queensland', country: '🇦🇺', program: 'Master of Engineering', status: 'reviewing', deadline: 'Feb 2027', notes: 'UQ International Scholarship applied' },
 ]
 
 const COLS = [

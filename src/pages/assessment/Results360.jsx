@@ -56,10 +56,10 @@ export default function Results360() {
             </div>
             <div className="card card-padded" style={{ background: 'linear-gradient(135deg,var(--B50),var(--purple-bg))', border: '1px solid var(--B100)', marginBottom: 24 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}><Sparkles size={20} style={{ color: 'var(--B500)' }} /><h3 className="h3">AI Recommendation</h3></div>
-                <p className="body" style={{ lineHeight: 1.8 }}>Dựa trên profile của bạn (MBTI: {mbti}, RIASEC: {hollandCode}, Readiness: {overallScore}/100), bạn phù hợp với ngành <strong>Business / International Relations</strong>. Nên xem xét: 🇨🇦 Canada hoặc 🇦🇺 Australia — chi phí vừa phải, cơ hội PR cao.</p>
+                <p className="body" style={{ lineHeight: 1.8 }}>Dựa trên profile của bạn (MBTI: {mbti}, RIASEC: {hollandCode}, Readiness: {overallScore}/100), bạn phù hợp với ngành <strong>Business / International Relations</strong>. Gợi ý: 🇦🇺 Melbourne hoặc Sydney — nhiều trường Go8 mạnh ngành Business, chi phí hợp lý, cơ hội PR cao.</p>
             </div>
             <div className="grid grid-3">
-                <button className="btn btn-primary btn-lg" style={{ justifyContent: 'center' }} onClick={() => nav('/countries')}>🌏 Khám phá Quốc gia</button>
+                <button className="btn btn-primary btn-lg" style={{ justifyContent: 'center' }} onClick={() => nav('/countries')}>🇦🇺 Khám phá Thành phố Úc</button>
                 <button className="btn btn-outline btn-lg" style={{ justifyContent: 'center' }} onClick={() => nav('/schools')}>🎓 Chọn Trường</button>
                 <button className="btn btn-outline btn-lg" style={{ justifyContent: 'center' }} onClick={() => nav('/consultants')}>🧑‍🏫 Book Consultant</button>
             </div>
