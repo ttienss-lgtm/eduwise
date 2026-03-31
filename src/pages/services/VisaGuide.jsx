@@ -1,60 +1,36 @@
 import { useState } from 'react'
 import { FileText, AlertTriangle } from 'lucide-react'
 
-const COUNTRIES_VISA = {
-    '🇺🇸 Mỹ (F-1)': {
-        time: '2-3 tháng', interview: true, cost: '$160 + SEVIS $350',
-        steps: ['Nhận I-20 từ trường', 'Đóng phí SEVIS ($350)', 'Điền form DS-160 online', 'Đặt lịch phỏng vấn tại ĐSQ', 'Chuẩn bị hồ sơ tài chính', 'Phỏng vấn visa', 'Nhận passport + visa'],
-        docs: ['I-20', 'DS-160 confirmation', 'Biên lai SEVIS', 'Hộ chiếu (còn hạn >6 tháng)', 'Ảnh 5x5cm', 'Sổ tiết kiệm / Bank statement', 'Giấy chứng nhận thu nhập bố mẹ', 'Bằng TN / bảng điểm gốc', 'IELTS/TOEFL score report'],
-        tips: ['Phỏng vấn bằng tiếng Anh, trả lời ngắn gọn', 'Chứng minh "non-immigrant intent" rõ ràng', 'Chuẩn bị giải thích funding source', 'Document tài chính càng nhiều càng tốt']
-    },
-    '🇬🇧 Anh (Tier 4)': {
-        time: '3-4 tuần', interview: false, cost: '£490 + IHS £776/năm',
-        steps: ['Nhận CAS từ trường', 'Mua IHS (Immigration Health Surcharge)', 'Nộp đơn online qua GOV.UK', 'Cung cấp biometrics tại VFS Global', 'Gửi hộ chiếu', 'Chờ kết quả (15 ngày làm việc)', 'Nhận visa và BRP letter'],
-        docs: ['CAS letter', 'Hộ chiếu', 'IELTS/TOEFL', 'Bank statement (28 ngày liên tục)', 'Giấy chứng nhận tài chính', 'Kết quả TB phổi (nếu ở VN >6 tháng)', 'Ảnh ICAO'],
-        tips: ['Bank statement phải cover £1334/tháng (London) hoặc £1023 (ngoài London)', 'Đăng ký biometrics sớm', 'Có thể dùng priority service (thêm £500)']
-    },
-    '🇦🇺 Úc (Subclass 500)': {
+const VISA_TYPES = {
+    '🎓 Subclass 500 — Student Visa': {
         time: '1-3 tháng', interview: false, cost: 'AUD 710',
-        steps: ['Nhận CoE từ trường', 'Mua OSHC (bảo hiểm sức khỏe)', 'Tạo ImmiAccount', 'Nộp đơn online', 'Viết GTE Statement', 'Khám sức khỏe', 'Chờ kết quả'],
-        docs: ['CoE', 'GTE Statement', 'OSHC', 'Hộ chiếu', 'IELTS/TOEFL', 'Chứng minh tài chính (AUD 24,505/năm)', 'Giấy khám sức khỏe', 'Lý lịch tư pháp'],
-        tips: ['GTE rất quan trọng — viết kỹ tại sao chọn Úc', 'Tiền trong bank 3 tháng trước khi nộp', 'Khám sức khỏe tại bệnh viện được chỉ định']
+        steps: ['Nhận CoE (Confirmation of Enrolment) từ trường', 'Mua OSHC — bảo hiểm sức khỏe bắt buộc', 'Tạo ImmiAccount trên immi.homeaffairs.gov.au', 'Nộp đơn online (Form 157A)', 'Viết GTE Statement (Genuine Temporary Entrant)', 'Khám sức khỏe tại bệnh viện được chỉ định', 'Xin lý lịch tư pháp (Police Clearance)', 'Chờ kết quả (4-12 tuần)'],
+        docs: ['CoE (Confirmation of Enrolment)', 'GTE Statement — giải thích tại sao chọn Úc', 'OSHC — bảo hiểm sức khỏe sinh viên', 'Hộ chiếu (còn hạn >6 tháng)', 'IELTS/TOEFL/PTE score report', 'Chứng minh tài chính (AUD 24,505/năm + học phí + vé máy bay)', 'Giấy khám sức khỏe (HAP ID)', 'Lý lịch tư pháp (Police Clearance)', 'Bằng TN / Bảng điểm gốc có công chứng', 'Ảnh hộ chiếu', 'Thư bảo lãnh tài chính (nếu có người sponsor)'],
+        tips: ['GTE Statement rất quan trọng — viết kỹ tại sao chọn Úc và sẽ quay về VN', 'Tiền trong bank tối thiểu 3 tháng trước khi nộp', 'Khám sức khỏe tại: BV Quốc tế (HCM), BV Hồng Ngọc (HN)', 'OSHC phổ biến: Medibank, Allianz, Bupa (~AUD 500-600/năm)', 'Có thể include dependent (vợ/chồng, con) trong application', 'Được phép làm việc 48 giờ/2 tuần khi học']
     },
-    '🇨🇦 Canada (Study Permit)': {
-        time: '8-12 tuần', interview: false, cost: 'CAD 150',
-        steps: ['Nhận LOA từ trường', 'Tạo tài khoản GIC ($10K CAD)', 'Nộp đơn online qua IRCC', 'Cung cấp biometrics', 'Khám sức khỏe', 'Chờ kết quả', 'Nhận POE Letter'],
-        docs: ['LOA (Letter of Acceptance)', 'GIC receipt', 'Hộ chiếu', 'IELTS', 'Chứng minh tài chính', 'Study plan', 'Lý lịch tư pháp', 'Ảnh ICAO'],
-        tips: ['GIC bắt buộc cho VN students', 'Apply SDS track để nhanh hơn', 'Biometrics tại VAC Hà Nội hoặc TP.HCM']
+    '🔧 Subclass 485 — Post-study Work': {
+        time: '2-4 tháng', interview: false, cost: 'AUD 1,895',
+        steps: ['Hoàn thành bằng cấp tại Úc (ít nhất 2 năm CRICOS)', 'Kiểm tra điều kiện: tuổi <50, IELTS 6.0 overall', 'Tạo ImmiAccount', 'Nộp đơn online trong vòng 6 tháng sau tốt nghiệp', 'Đính kèm hồ sơ yêu cầu', 'Khám sức khỏe + Police Clearance', 'Chờ kết quả'],
+        docs: ['Completion Letter từ trường', 'Bằng cấp Úc (Bachelor/Master/PhD)', 'IELTS 6.0 overall (hoặc PTE 50)', 'Hộ chiếu', 'Police Clearance (VN + Úc)', 'Khám sức khoẻ', 'Bảo hiểm sức khỏe'],
+        tips: ['Graduate Work stream: 18 tháng (nếu ngành trong SOL)', 'Post-study Work stream: 2-4 năm tùy bằng cấp', 'Bachelor: 2 năm | Master (coursework): 3 năm | Master (research)/PhD: 4 năm', 'Học ở regional (Adelaide, Perth, Gold Coast...): +1-2 năm extra', 'Nộp trong vòng 6 tháng sau graduation — ĐỪNG TRỄ!']
     },
-    '🇯🇵 Nhật (Student Visa)': {
-        time: '1-3 tháng', interview: true, cost: '¥3,000',
-        steps: ['Nhận CoE (Certificate of Eligibility) từ trường', 'Nộp đơn tại ĐSQ Nhật', 'Nộp hồ sơ + CoE', 'Phỏng vấn (nếu cần)', 'Chờ xử lý (5-10 ngày)', 'Nhận visa dán passport'],
-        docs: ['CoE gốc', 'Hộ chiếu (còn hạn)', 'Đơn xin visa', 'Ảnh 4.5x3.5cm', 'Bằng TN / bảng điểm', 'JLPT certificate (nếu có)', 'Giấy bảo lãnh tài chính', 'Sổ tiết kiệm người bảo lãnh'],
-        tips: ['CoE do trường xin từ Immigration — mất 1-3 tháng', 'Nếu xin MEXT, không cần CoE', 'Chuẩn bị tiếng Nhật cơ bản cho phỏng vấn']
-    },
-    '🇰🇷 Hàn Quốc (D-2 Visa)': {
-        time: '2-4 tuần', interview: true, cost: '$50',
-        steps: ['Nhận Admission Letter từ trường', 'Chuẩn bị hồ sơ visa', 'Nộp tại ĐSQ/LSQ Hàn Quốc', 'Phỏng vấn', 'Chờ kết quả (7-10 ngày)', 'Nhận visa'],
-        docs: ['Admission Letter', 'Hộ chiếu', 'Đơn xin visa (form)', 'Ảnh 3.5x4.5cm', 'Bằng TN / bảng điểm', 'TOPIK certificate (nếu có)', 'Chứng minh tài chính ($10K+)', 'Bảo hiểm sức khỏe', 'Study plan'],
-        tips: ['TOPIK level 3+ cho chương trình tiếng Hàn', 'Có thể apply trong nước hoặc online', 'Visa D-2 cho phép part-time 20h/tuần']
-    },
-    '🇩🇪 Đức (National Visa)': {
-        time: '6-12 tuần', interview: true, cost: '€75',
-        steps: ['Nhận Admission Letter từ trường', 'Mở Blocked Account (€11,208/năm)', 'Mua bảo hiểm sức khỏe', 'Đặt lịch hẹn tại ĐSQ Đức', 'Nộp hồ sơ + phỏng vấn', 'Chờ kết quả (6-12 tuần)', 'Nhận visa'],
-        docs: ['Admission Letter / Zulassung', 'Blocked Account confirmation', 'Bảo hiểm sức khỏe', 'Hộ chiếu', 'Ảnh biometric', 'Bằng TN + bảng điểm (apostille)', 'Chứng chỉ ngôn ngữ (TestDaF/IELTS)', 'Motivation letter', 'CV (Lebenslauf)'],
-        tips: ['Blocked Account bắt buộc — mở tại Expatrio hoặc Deutsche Bank', 'Nếu học bằng tiếng Đức: cần TestDaF B2', 'Appointment tại ĐSQ rất khó — đặt sớm 2-3 tháng', 'Sau khi sang cần đăng ký Anmeldung trong 2 tuần']
+    '🛂 PR Pathway — Skilled Migration': {
+        time: '6-18 tháng', interview: false, cost: 'AUD 4,640+',
+        steps: ['Kiểm tra ngành có trong SOL (Skilled Occupation List)', 'Đánh giá bằng cấp qua assessing body (ACS, EA, VETASSESS...)', 'Thi IELTS/PTE đạt yêu cầu (thường 7.0+/65+)', 'Tính điểm SkillSelect (tối thiểu 65 điểm)', 'Nộp EOI (Expression of Interest)', 'Chờ ITA (Invitation to Apply)', 'Nộp hồ sơ PR chính thức', 'Chờ kết quả (6-12 tháng)'],
+        docs: ['Skills Assessment result', 'IELTS 7.0+ hoặc PTE 65+ (mỗi band)', 'Bằng cấp Úc có công chứng', 'Experience letters từ employer', 'Police Clearance (tất cả nước đã ở >12 tháng)', 'Khám sức khỏe', 'Form 80 (Personal Particulars)'],
+        tips: ['Subclass 189 (Independent): Không cần sponsor, 65+ điểm', 'Subclass 190 (State Nominated): +5 điểm từ state nomination', 'Subclass 491 (Regional): +15 điểm, sống vùng regional 3 năm', 'Ngành dễ PR: IT, Engineering, Nursing, Accounting, Teaching', 'Adelaide, Tasmania, Canberra: nomination dễ hơn Sydney/Melbourne', 'Điểm IELTS 8.0 = +20 điểm; PTE 79 = +20 điểm — đáng đầu tư!']
     },
 }
 
 export default function VisaGuide() {
-    const [selected, setSelected] = useState(Object.keys(COUNTRIES_VISA)[0])
-    const visa = COUNTRIES_VISA[selected]
+    const [selected, setSelected] = useState(Object.keys(VISA_TYPES)[0])
+    const visa = VISA_TYPES[selected]
 
     return (
         <div>
-            <div className="page-header"><h1 className="h1">📝 Visa Guide</h1><p className="page-subtitle">Hướng dẫn xin visa step-by-step — 7 quốc gia</p></div>
+            <div className="page-header"><h1 className="h1">📝 Visa & PR Guide — Úc</h1><p className="page-subtitle">Hướng dẫn visa du học, post-study work và PR pathway tại Australia</p></div>
             <div style={{ display: 'flex', gap: 8, marginBottom: 24, flexWrap: 'wrap' }}>
-                {Object.keys(COUNTRIES_VISA).map(c => (
+                {Object.keys(VISA_TYPES).map(c => (
                     <div key={c} className={`tag${c === selected ? ' active' : ''}`} onClick={() => setSelected(c)}>{c}</div>
                 ))}
             </div>
@@ -62,7 +38,7 @@ export default function VisaGuide() {
                 <div>
                     <div className="card card-padded" style={{ marginBottom: 16 }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4, flexWrap: 'wrap' }}>
-                            <h3 className="h3">Quy trình xin visa</h3>
+                            <h3 className="h3">Quy trình</h3>
                             <div className="badge badge-blue">⏱ {visa.time}</div>
                             {visa.interview && <div className="badge badge-orange">🎤 Có phỏng vấn</div>}
                             <div className="badge badge-purple">💰 {visa.cost}</div>

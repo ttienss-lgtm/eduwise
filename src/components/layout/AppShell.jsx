@@ -18,9 +18,9 @@ const NAV = [
     },
     {
         section: 'Khám phá', items: [
-            { to: '/countries', icon: Globe, label: 'Quốc gia' },
-            { to: '/countries/compare', icon: ArrowLeftRight, label: 'So sánh Quốc gia' },
-            { to: '/schools', icon: GraduationCap, label: 'Trường học' },
+            { to: '/countries', icon: Globe, label: 'Thành phố Úc' },
+            { to: '/countries/compare', icon: ArrowLeftRight, label: 'So sánh Thành phố' },
+            { to: '/schools', icon: GraduationCap, label: 'Trường tại Úc' },
             { to: '/schools/compare', icon: ArrowLeftRight, label: 'So sánh Trường' },
             { to: '/community/reviews', icon: Star, label: 'School Reviews' },
         ]
@@ -50,7 +50,7 @@ export default function AppShell({ user, onLogout }) {
                     <div className="sidebar-brand-icon"><BookOpen size={20} /></div>
                     <div>
                         <div className="sidebar-brand-text">EduWise</div>
-                        <div className="sidebar-brand-tag">Study Abroad Platform</div>
+                        <div className="sidebar-brand-tag">Study in Australia 🇦🇺</div>
                     </div>
                 </div>
                 <nav className="sidebar-nav">

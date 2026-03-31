@@ -1,12 +1,12 @@
-import { CheckCircle2, Circle, Clock, AlertTriangle, ArrowUpRight } from 'lucide-react'
+import { CheckCircle2, Circle, Clock, AlertTriangle } from 'lucide-react'
 
 const MILESTONES = [
-    { title: 'Đánh giá năng lực', status: 'done', date: 'Tháng 1-2', tasks: ['Hoàn thành 12 bài test', 'Nhận hồ sơ 360°', 'Xác định gap'] },
-    { title: 'Nâng cao ngôn ngữ', status: 'current', date: 'Tháng 3-6', tasks: ['Đăng ký lớp IELTS', 'Luyện đề mỗi tuần', 'Thi IELTS lần 1 (target 6.5)'] },
-    { title: 'Nâng cao hồ sơ', status: 'upcoming', date: 'Tháng 4-8', tasks: ['Tham gia CLB ngoại khóa', 'Viết blog cá nhân', 'Thực tập ngành liên quan'] },
-    { title: 'Chọn trường & Apply', status: 'upcoming', date: 'Tháng 9-11', tasks: ['Shortlist 5-8 trường', 'Viết SOP và CV', 'Xin thư giới thiệu', 'Nộp application'] },
-    { title: 'Xin Visa', status: 'upcoming', date: 'Tháng 12-14', tasks: ['Chuẩn bị chứng minh tài chính', 'Điền form xin visa', 'Luyện phỏng vấn'] },
-    { title: 'Pre-departure', status: 'upcoming', date: 'Tháng 15-18', tasks: ['Đặt vé máy bay', 'Tìm chỗ ở', 'Mua bảo hiểm', 'Bay!✈️'] },
+    { title: 'Đánh giá năng lực', status: 'done', date: 'Tháng 1-2', tasks: ['Hoàn thành 12 bài test trên EduWise', 'Nhận hồ sơ 360°', 'Xác định gap (IELTS, GPA, ngoại khóa)'] },
+    { title: 'Nâng cao ngôn ngữ', status: 'current', date: 'Tháng 3-6', tasks: ['Đăng ký lớp IELTS hoặc PTE Academic', 'Luyện đề mỗi tuần (target: IELTS 6.5 / PTE 58)', 'Thi IELTS/PTE lần 1', 'Nếu chưa đạt → luyện thêm và thi lần 2'] },
+    { title: 'Chọn trường & Chuẩn bị hồ sơ', status: 'upcoming', date: 'Tháng 7-9', tasks: ['Shortlist 5-8 trường Úc (Reach/Match/Safety)', 'Viết SOP (Statement of Purpose)', 'Chuẩn bị CV, bảng điểm, bằng TN', 'Xin 2-3 thư giới thiệu (LOR)'] },
+    { title: 'Nộp Application', status: 'upcoming', date: 'Tháng 10-12', tasks: ['Nộp application online qua trường hoặc agent', 'Apply học bổng (nếu có)', 'Nhận Offer Letter → chấp nhận CoE'] },
+    { title: 'Xin Visa Subclass 500', status: 'upcoming', date: 'Tháng 13-15', tasks: ['Mua OSHC (bảo hiểm sức khỏe bắt buộc)', 'Viết GTE Statement', 'Chuẩn bị chứng minh tài chính (AUD 24,505/năm)', 'Khám sức khỏe + Lý lịch tư pháp', 'Nộp visa online qua ImmiAccount'] },
+    { title: 'Pre-departure — Bay đi Úc! ✈️', status: 'upcoming', date: 'Tháng 16-18', tasks: ['Đặt vé máy bay (VN → Sydney/Melbourne/Brisbane)', 'Tìm chỗ ở (Student accommodation hoặc share house)', 'Đăng ký Airport Pickup từ trường', 'Chuẩn bị đồ dùng cá nhân', 'Orientation Week tại trường!'] },
 ]
 
 const STATUS = { done: { icon: CheckCircle2, color: 'var(--green)', bg: 'var(--green-bg)', label: 'Hoàn thành' }, current: { icon: Clock, color: 'var(--B500)', bg: 'var(--B50)', label: 'Đang thực hiện' }, upcoming: { icon: Circle, color: 'var(--N400)', bg: 'var(--N100)', label: 'Sắp tới' } }
@@ -14,11 +14,11 @@ const STATUS = { done: { icon: CheckCircle2, color: 'var(--green)', bg: 'var(--g
 export default function Roadmap() {
     return (
         <div>
-            <div className="page-header"><h1 className="h1">📋 Roadmap Du học</h1><p className="page-subtitle">Lộ trình 18 tháng cá nhân hóa cho bạn</p></div>
+            <div className="page-header"><h1 className="h1">📋 Roadmap Du học Úc</h1><p className="page-subtitle">Lộ trình 18 tháng cá nhân hóa cho hành trình du học Australia</p></div>
             <div className="card card-padded" style={{ marginBottom: 24, background: 'linear-gradient(135deg,var(--B50),var(--purple-bg))' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}><AlertTriangle size={18} style={{ color: 'var(--orange)' }} /><span style={{ fontWeight: 600, color: 'var(--N800)' }}>Gap cần cải thiện</span></div>
                 <div className="grid grid-3">
-                    <div style={{ textAlign: 'center' }}><div style={{ fontSize: 13, color: 'var(--N500)' }}>IELTS</div><div style={{ fontWeight: 700, color: 'var(--red)' }}>5.5 → 6.5</div><div style={{ fontSize: 12, color: 'var(--N400)' }}>Cần +1.0</div></div>
+                    <div style={{ textAlign: 'center' }}><div style={{ fontSize: 13, color: 'var(--N500)' }}>IELTS / PTE</div><div style={{ fontWeight: 700, color: 'var(--red)' }}>5.5 → 6.5</div><div style={{ fontSize: 12, color: 'var(--N400)' }}>Cần +1.0 IELTS</div></div>
                     <div style={{ textAlign: 'center' }}><div style={{ fontSize: 13, color: 'var(--N500)' }}>GPA</div><div style={{ fontWeight: 700, color: 'var(--orange)' }}>7.5 → 8.0</div><div style={{ fontSize: 12, color: 'var(--N400)' }}>Cần +0.5</div></div>
                     <div style={{ textAlign: 'center' }}><div style={{ fontSize: 13, color: 'var(--N500)' }}>Ngoại khóa</div><div style={{ fontWeight: 700, color: 'var(--red)' }}>Thiếu</div><div style={{ fontSize: 12, color: 'var(--N400)' }}>Cần 2-3 hoạt động</div></div>
                 </div>

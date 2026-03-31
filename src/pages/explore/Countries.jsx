@@ -1,31 +1,30 @@
-import { Globe, DollarSign, Clock, Briefcase, Languages } from 'lucide-react'
+import { DollarSign, GraduationCap, Users, Sun, Shield } from 'lucide-react'
 
-const COUNTRIES = [
-    { flag: '🇺🇸', name: 'Mỹ (USA)', tuition: '$20K-60K/năm', living: '$1000-2500/tháng', duration: '4 năm (Bachelor), 2 năm (Master)', lang: 'TOEFL 80+ / IELTS 6.5+', pr: 'OPT 1-3 năm', bg: 'linear-gradient(135deg,#dbeafe,#eff6ff)' },
-    { flag: '🇬🇧', name: 'Anh (UK)', tuition: '£12K-38K/năm', living: '£800-1500/tháng', duration: '3 năm (Bachelor), 1 năm (Master)', lang: 'IELTS 6.0-7.0', pr: 'Graduate visa 2 năm', bg: 'linear-gradient(135deg,#fce4ec,#fef2f2)' },
-    { flag: '🇦🇺', name: 'Úc (Australia)', tuition: 'AUD 20K-45K/năm', living: 'AUD 1500-2500/tháng', duration: '3 năm (Bachelor), 1.5-2 năm (Master)', lang: 'IELTS 6.0-6.5', pr: 'Post-study work 2-4 năm, dễ PR', bg: 'linear-gradient(135deg,#ecfdf5,#f0fdfa)' },
-    { flag: '🇨🇦', name: 'Canada', tuition: 'CAD 15K-35K/năm', living: 'CAD 1000-2000/tháng', duration: '4 năm (Bachelor), 1-2 năm (Master)', lang: 'IELTS 6.0-6.5', pr: 'PGWP 1-3 năm, CRS PR pathway', bg: 'linear-gradient(135deg,#fef2f2,#fffbeb)' },
-    { flag: '🇯🇵', name: 'Nhật Bản', tuition: '¥500K-1.5M/năm', living: '¥80-120K/tháng', duration: '4 năm (Bachelor), 2 năm (Master)', lang: 'JLPT N2+ hoặc IELTS', pr: 'Visa thay đổi status', bg: 'linear-gradient(135deg,#fdf2f8,#f5f3ff)' },
-    { flag: '🇰🇷', name: 'Hàn Quốc', tuition: '₩4-10M/kỳ', living: '₩600K-1M/tháng', duration: '4 năm (Bachelor), 2 năm (Master)', lang: 'TOPIK 3+ hoặc IELTS', pr: 'D-10 visa tìm việc', bg: 'linear-gradient(135deg,#eff6ff,#ecfdf5)' },
-    { flag: '🇩🇪', name: 'Đức (Germany)', tuition: 'Miễn phí (public)', living: '€800-1200/tháng', duration: '3 năm (Bachelor), 2 năm (Master)', lang: 'TestDaF B2+ hoặc IELTS (chương trình EN)', pr: '18 tháng tìm việc sau tốt nghiệp', bg: 'linear-gradient(135deg,#fffbeb,#fef2f2)' },
+const CITIES = [
+    { flag: '🏙️', name: 'Sydney (NSW)', living: 'AUD 2,000-2,800/tháng', universities: '6 trường lớn (UNSW, USyd, UTS, Macquarie...)', fields: 'Business, Finance, IT, Law', viet: '300K+ người Việt', livability: '⭐⭐⭐⭐⭐', bg: 'linear-gradient(135deg,#dbeafe,#eff6ff)' },
+    { flag: '☕', name: 'Melbourne (VIC)', living: 'AUD 1,800-2,500/tháng', universities: '8 trường lớn (UoM, Monash, RMIT, Deakin...)', fields: 'Engineering, Design, Arts, Medicine', viet: '250K+ người Việt', livability: '⭐⭐⭐⭐⭐', bg: 'linear-gradient(135deg,#ecfdf5,#f0fdfa)' },
+    { flag: '🌴', name: 'Brisbane (QLD)', living: 'AUD 1,500-2,200/tháng', universities: '3 trường lớn (UQ, QUT, Griffith)', fields: 'Science, Engineering, Hospitality', viet: '80K+ người Việt', livability: '⭐⭐⭐⭐', bg: 'linear-gradient(135deg,#fef9c3,#fffbeb)' },
+    { flag: '🏖️', name: 'Perth (WA)', living: 'AUD 1,400-2,000/tháng', universities: '4 trường lớn (UWA, Curtin, Murdoch, ECU)', fields: 'Mining, Engineering, Marine Science', viet: '50K+ người Việt', livability: '⭐⭐⭐⭐', bg: 'linear-gradient(135deg,#fce4ec,#fef2f2)' },
+    { flag: '🍷', name: 'Adelaide (SA)', living: 'AUD 1,300-1,800/tháng', universities: '3 trường lớn (Adelaide, UniSA, Flinders)', fields: 'Wine, Health, Defence, Space', viet: '30K+ người Việt', livability: '⭐⭐⭐⭐', bg: 'linear-gradient(135deg,#f5f3ff,#fdf2f8)' },
+    { flag: '🏛️', name: 'Canberra (ACT)', living: 'AUD 1,600-2,200/tháng', universities: '2 trường lớn (ANU, UC)', fields: 'Politics, Research, Policy, Cyber Security', viet: '15K+ người Việt', livability: '⭐⭐⭐⭐', bg: 'linear-gradient(135deg,#ecfdf5,#dbeafe)' },
 ]
 
 export default function Countries() {
     return (
         <div>
-            <div className="page-header"><h1 className="h1">🌏 Khám phá Quốc gia</h1><p className="page-subtitle">So sánh 7 quốc gia du học phổ biến nhất</p></div>
+            <div className="page-header"><h1 className="h1">🇦🇺 Khám phá Thành phố tại Úc</h1><p className="page-subtitle">So sánh 6 thành phố du học phổ biến nhất tại Australia</p></div>
             <div className="grid grid-2">
-                {COUNTRIES.map(c => (
+                {CITIES.map(c => (
                     <div className="card country-card card-lift" key={c.name}>
                         <div className="country-flag" style={{ background: c.bg }}>{c.flag}</div>
                         <div className="country-info">
                             <div className="country-name">{c.name}</div>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 12 }}>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, color: 'var(--N600)' }}><DollarSign size={15} style={{ color: 'var(--green)' }} /><span>Học phí: {c.tuition}</span></div>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, color: 'var(--N600)' }}><DollarSign size={15} style={{ color: 'var(--orange)' }} /><span>Sinh hoạt: {c.living}</span></div>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, color: 'var(--N600)' }}><Clock size={15} style={{ color: 'var(--B500)' }} /><span>{c.duration}</span></div>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, color: 'var(--N600)' }}><Languages size={15} style={{ color: 'var(--purple)' }} /><span>{c.lang}</span></div>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, color: 'var(--N600)' }}><Briefcase size={15} style={{ color: 'var(--teal)' }} /><span>{c.pr}</span></div>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, color: 'var(--N600)' }}><GraduationCap size={15} style={{ color: 'var(--B500)' }} /><span>{c.universities}</span></div>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, color: 'var(--N600)' }}><Shield size={15} style={{ color: 'var(--teal)' }} /><span>Ngành mạnh: {c.fields}</span></div>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, color: 'var(--N600)' }}><Users size={15} style={{ color: 'var(--purple)' }} /><span>Cộng đồng VN: {c.viet}</span></div>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, color: 'var(--N600)' }}><Sun size={15} style={{ color: 'var(--green)' }} /><span>Livability: {c.livability}</span></div>
                             </div>
                         </div>
                     </div>

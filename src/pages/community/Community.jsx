@@ -1,18 +1,18 @@
 import { Heart, MessageCircle, MapPin, Calendar } from 'lucide-react'
 
 const POSTS = [
-    { user: 'Phạm Thu Hà', avatar: 'H', school: 'UoM', country: '🇦🇺 Melbourne', time: '2 giờ trước', content: 'Chi phí sinh hoạt Melbourne ~$1800/tháng nếu share phòng. Part-time job barista kiếm $22/giờ khá ổn. Tip: nên tìm việc qua Seek.com, đừng dùng Indeed.', likes: 45, comments: 12, color: 'var(--pink)' },
-    { user: 'Lê Đức', avatar: 'Đ', school: 'Waseda', country: '🇯🇵 Tokyo', time: '5 giờ trước', content: 'Học bổng MEXT cover tuition + 143K yen/tháng. Đủ sống nếu nấu ăn tự. Tip: Apply sớm 1 năm, chuẩn bị Research Plan kỹ.', likes: 89, comments: 23, color: 'var(--teal)' },
-    { user: 'Nguyễn Anh', avatar: 'A', school: 'UBC', country: '🇨🇦 Vancouver', time: '1 ngày trước', content: 'Canada PR pathway rất clear: 1 năm PGWP → 1 năm work exp → CRS 470+ → PR. Mình từ du học sinh thành PR chỉ mất 3 năm. AMA!', likes: 156, comments: 45, color: 'var(--B500)' },
-    { user: 'Trần Linh', avatar: 'L', school: 'TUM', country: '🇩🇪 Munich', time: '2 ngày trước', content: 'Học miễn phí ở Đức nhưng cần chứng minh €11208/năm trong blocked account. Sinh hoạt Munich ~€1000/tháng. Nên học B1 Đức trước khi qua.', likes: 67, comments: 18, color: 'var(--orange)' },
+    { user: 'Phạm Thu Hà', avatar: 'H', school: 'UoM', country: '☕ Melbourne', time: '2 giờ trước', content: 'Chi phí sinh hoạt Melbourne ~$1800/tháng nếu share phòng. Part-time job barista kiếm $23-28/giờ khá ổn. Tip: nên tìm việc qua Seek.com.au hoặc Indeed, đừng dùng Facebook group vì hay bị trả cash dưới minimum wage.', likes: 45, comments: 12, color: 'var(--pink)' },
+    { user: 'Nguyễn Thảo Vy', avatar: 'V', school: 'UNSW', country: '🏙️ Sydney', time: '5 giờ trước', content: 'Mới tốt nghiệp IT ở UNSW và đã tìm được việc tech ở Atlassian. Tips: apply grad program của big tech từ tháng 3-4 (trước graduation). LinkedIn rất quan trọng ở Úc — kết nối với recruiters sớm. UNSW career fair cũng rất hữu ích.', likes: 89, comments: 23, color: 'var(--teal)' },
+    { user: 'Lê Hoàng Nam', avatar: 'N', school: 'UQ', country: '🌴 Brisbane', time: '1 ngày trước', content: 'Brisbane đang phát triển cực nhanh nhờ Olympic 2032. Giá nhà/rent thấp hơn Sydney/Melbourne nhiều. UQ campus đẹp nhất Úc luôn. Cộng đồng VN ở Sunnybank rất đông, muốn ăn phở hay bún bò đều có. AMA!', likes: 156, comments: 45, color: 'var(--B500)' },
+    { user: 'Trần Anh', avatar: 'A', school: 'Adelaide Uni', country: '🍷 Adelaide', time: '2 ngày trước', content: 'Adelaide là lựa chọn tuyệt vời nếu muốn PR! Chi phí sống thấp nhất (~$1400/tháng), được +5 điểm regional bonus cho PR. University of Adelaide thuộc Go8, chất lượng tốt mà học phí thấp hơn UoM/USyd. State nomination SA cũng dễ hơn nhiều.', likes: 67, comments: 18, color: 'var(--orange)' },
 ]
 
 export default function Community() {
     return (
         <div>
-            <div className="page-header"><h1 className="h1">👥 Cộng đồng Du học</h1><p className="page-subtitle">Chia sẻ từ du học sinh đang ở nước ngoài</p></div>
-            <div style={{ display: 'flex', gap: 8, marginBottom: 20 }}>
-                <div className="tag active">Tất cả</div><div className="tag">🇦🇺 Úc</div><div className="tag">🇯🇵 Nhật</div><div className="tag">🇨🇦 Canada</div><div className="tag">🇩🇪 Đức</div><div className="tag">🇬🇧 Anh</div>
+            <div className="page-header"><h1 className="h1">👥 Cộng đồng Du học Úc</h1><p className="page-subtitle">Chia sẻ từ du học sinh Việt Nam đang ở Australia</p></div>
+            <div style={{ display: 'flex', gap: 8, marginBottom: 20, flexWrap: 'wrap' }}>
+                <div className="tag active">Tất cả</div><div className="tag">🏙️ Sydney</div><div className="tag">☕ Melbourne</div><div className="tag">🌴 Brisbane</div><div className="tag">🍷 Adelaide</div><div className="tag">🏖️ Perth</div>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
                 {POSTS.map((p, i) => (

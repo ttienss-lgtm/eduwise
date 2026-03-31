@@ -3,16 +3,16 @@ import { ClipboardCheck, Globe, GraduationCap, Users, Map, TrendingUp, ArrowRigh
 
 const QUICK_STATS = [
     { icon: ClipboardCheck, label: 'Bài test', value: '4/12', color: 'var(--teal)', bg: 'var(--teal-bg)' },
-    { icon: Globe, label: 'Quốc gia', value: '7', color: 'var(--B500)', bg: 'var(--B50)' },
+    { icon: Globe, label: 'Thành phố Úc', value: '6', color: 'var(--B500)', bg: 'var(--B50)' },
     { icon: GraduationCap, label: 'Trường phù hợp', value: '—', color: 'var(--purple)', bg: 'var(--purple-bg)' },
     { icon: Users, label: 'Tư vấn viên', value: '50+', color: 'var(--orange)', bg: 'var(--orange-bg)' },
 ]
 
 const ACTIONS = [
     { to: '/assessment', icon: ClipboardCheck, title: 'Tiếp tục Assessment', desc: 'Hoàn thành 12 bài test để nhận hồ sơ 360°', color: 'var(--teal)', bg: 'var(--teal-bg)' },
-    { to: '/countries', icon: Globe, title: 'Khám phá Quốc gia', desc: 'Tìm hiểu 7 quốc gia du học phổ biến', color: 'var(--B500)', bg: 'var(--B50)' },
-    { to: '/consultants', icon: Users, title: 'Book Tư vấn viên', desc: 'Kết nối cựu du học sinh thành công', color: 'var(--purple)', bg: 'var(--purple-bg)' },
-    { to: '/roadmap', icon: Map, title: 'Xem Roadmap', desc: 'Lộ trình cá nhân hóa theo profile', color: 'var(--green)', bg: 'var(--green-bg)' },
+    { to: '/countries', icon: Globe, title: 'Khám phá Thành phố Úc', desc: 'Tìm hiểu 6 thành phố du học tại Australia', color: 'var(--B500)', bg: 'var(--B50)' },
+    { to: '/consultants', icon: Users, title: 'Book Tư vấn viên', desc: 'Kết nối cựu du học sinh tại Úc', color: 'var(--purple)', bg: 'var(--purple-bg)' },
+    { to: '/roadmap', icon: Map, title: 'Xem Roadmap', desc: 'Lộ trình du học Úc cá nhân hóa', color: 'var(--green)', bg: 'var(--green-bg)' },
 ]
 
 export default function Dashboard({ user }) {
@@ -20,7 +20,7 @@ export default function Dashboard({ user }) {
         <div>
             <div className="page-header">
                 <h1 className="h1">Xin chào, {user?.name || 'bạn'} 👋</h1>
-                <p className="page-subtitle">Hãy bắt đầu hành trình du học của bạn</p>
+                <p className="page-subtitle">Hãy bắt đầu hành trình du học Úc của bạn</p>
             </div>
 
             <div className="grid grid-4" style={{ marginBottom: 28 }}>
@@ -38,7 +38,7 @@ export default function Dashboard({ user }) {
                         <TrendingUp size={22} />
                         <h3 style={{ fontWeight: 600, fontSize: 16 }}>Hoàn thành Assessment để mở khóa AI Tư vấn</h3>
                     </div>
-                    <p style={{ fontSize: 14, opacity: 0.85, marginBottom: 16 }}>Bạn đã hoàn thành 0/12 bài test. Hoàn thành tối thiểu 8 bài để nhận gợi ý cá nhân hóa.</p>
+                    <p style={{ fontSize: 14, opacity: 0.85, marginBottom: 16 }}>Bạn đã hoàn thành 0/12 bài test. Hoàn thành tối thiểu 8 bài để nhận gợi ý trường Úc cá nhân hóa.</p>
                     <div className="progress-bar" style={{ background: 'rgba(255,255,255,0.2)' }}>
                         <div className="progress-fill" style={{ width: '0%', background: 'white' }} />
                     </div>
